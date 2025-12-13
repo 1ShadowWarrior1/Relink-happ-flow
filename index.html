@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowVPN Relink</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* Мобильные устройства (до 480px) */
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
+      h2 {
+        font-size: 18px;
+      }
+      
+      button {
+        padding: 8px 16px;
+        font-size: 14px;
+        width: 100%;
+        max-width: 200px;
+      }
+    }
+
+    /* Планшеты (481px - 768px) */
+    @media (min-width: 481px) and (max-width: 768px) {
+      h2 {
+        font-size: 20px;
+      }
+      
+      button {
+        padding: 12px 24px;
+        font-size: 16px;
+      }
+    }
+
+    /* Большие экраны (769px и выше) */
+    @media (min-width: 769px) {
+      h2 {
+        font-size: 24px;
+      }
+      
+      button {
+        padding: 15px 30px;
+        font-size: 18px;
+      }
+    }
+  </style>
+  <script>
+    function openApp(url) {
+      // Метод 1: Создаём и кликаем по ссылке
+      const link = document.createElement('a');
+      link.href = url;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Метод 2: Через location.href
+      setTimeout(() => {
+        window.location.href = url;
+      }, 100);
+    }
+    
+    window.onload = function() {
+      const params = new URLSearchParams(window.location.search);
+      const key = params.get('key');
+      
+      if (!key) {
+        document.body.innerHTML = "<h2>Аргумент не найден в URL!</h2>";
+        return;
+      }
+      
+      // Используем happ://add/{key} для всех платформ
+      const protoUrl = "happ://add/" + key;
+      
+      // Автоматический запуск
+      setTimeout(() => {
+        openApp(protoUrl);
+      }, 500);
+      
+      // Простая кнопка как fallback
+      document.body.innerHTML = "<h2>Если приложение не открылось автоматически:</h2><button onclick='openApp(\"" + protoUrl + "\")'>Открыть в приложении</button>";
+    };
+  </script>
+</head>
+<body>
+  <h2>Перенаправление...</h2>
+</body>
+</html>
+
