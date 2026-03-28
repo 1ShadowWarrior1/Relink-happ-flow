@@ -20,7 +20,7 @@ index.html?key=YOUR_VPN_KEY
 Или разместите файл на веб-сервере и используйте URL вида:
 
 ```
-https://your-domain.com/index.html?key=YOUR_VPN_KEY
+https://1shadowwarrior1.github.io/Relink-happ-flow/index.html?key=YOUR_VPN_KEY
 ```
 
 ## Как это работает
@@ -48,7 +48,3 @@ Relink-happ-flow/
 
 - Приложение **Happ** должно быть установлено на устройстве
 - Устройство должно поддерживать кастомные протоколы (`happ://`)
-
-## Лицензия
-
-MIT
